@@ -13,8 +13,7 @@ export default class App extends React.Component {
   handleClick = async () => {
     this.setState({ isLoading: true })
 
-    const data = await request.get('https://alchemy-pokedex.herokuapp.com/api/pokedex');
-    console.log(data);
+    const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.search}`);
 
     this.setState({
       pokeState: data.body.results,
@@ -34,10 +33,10 @@ export default class App extends React.Component {
         <header className="App-header">
           <input onChange={(e) => this.setState({ search: e.target.value })} />
           <button onClick={this.handleClick}>Catch Pokemon!</button>
-          {
-            this.state.pokeState.map(poke => <p>{poke.pokemon} : {poke.name} </p>)
-          }
         </header>
+        {
+          this.state.pokeState.map(poke => <p>{poke.pokemon} : {poke.image} </p>)
+        }
       </div >
     );
   }
