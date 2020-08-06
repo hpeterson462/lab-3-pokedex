@@ -1,37 +1,34 @@
 import React from 'react';
 import './App.css';
 import request from 'superagent';
-import PokeDropdown from './PokeDropdown.js';
 import PokeItem from './PokeItem.js';
 
 export default class SearchPage extends React.Component {
-
     state = {
         search: '',
         isLoading: false,
         pokeState: [],
-        selectedOption,
-
-    }
-
-    handleDropdown = (e) => {
-        const selectedOption = e.target.value;
-        this.setState({ selectedOption })
+        searchBy: 'pokemon'
     }
 
     handleClick = async () => {
         this.setState({ isLoading: true })
 
-        const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.search}`);
+        const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchBy}=${this.state.search}`);
 
         this.setState({
             pokeState: data.body.results,
             isLoading: false
-
         })
     }
 
-    handlePokeType = (e) => {
+    handleTextInput = (e) => {
+        const pokemon = e.target.value;
+
+        this.setState({ filter: pokemon })
+    }
+
+    handleDropdown = (e) => {
         const type = e.target.value;
 
         this.setState({ filter: type })
@@ -42,28 +39,30 @@ export default class SearchPage extends React.Component {
         const { pokeState, isLoading } = this.state;
 
         return (
-            <div>
-                <header className="App-header">
-                    <p className="search-bar">
+            <>
+                <div className="App-div">
+                    <section className="search-bar">
                         <div className="prompt">
                             What Pokemon do you want to catch?
-              </div>
-                        <input onChange={(e) => this.setState({ search: e.target.value })} />
-                        <button onClick={this.handleClick}>Catch Pokemon!</button>
-                    </p>
+                        </div>
+                        <input onChange={this.handleTextInput} />
+                    </section>
+                    <select onChange={this.handleDropdown} >
+                        <option value="pokemon">Name
+                            </option>
+                        <option value="type">Type
+                            </option>
+                        <option value="attack">Attack
+                            </option>
+                        <option value="defense">Defense
+                            </option>
+                    </select>
+                    <button onClick={this.handleClick}>Catch Pokemon!</button>
                     {
-                        isLoading ? <p>Loading</p> : pokeState.map(poke => <PokeItem)
+                        isLoading ? <h1>Loading</h1> : pokeState.map(poke => <PokeItem pokemon={poke} />)
                     }
-                    <PokeDropdown pokeState={this.state.pokeState} />
-                    {
-                        pokeState.map(poke => <div key={poke.pokemon}>
-                            <p>{poke.pokemon} </p>
-                            <img src={poke.url_image} alt={poke.pokemon} />
-                        </div>)
-                    }
-
-                </header>
-            </div >
+                </div >
+            </>
         );
     }
 }

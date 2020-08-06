@@ -4,22 +4,23 @@ import {
   Route,
   Switch,
   Link
-  from 'react-router-dom';
 }
+  from 'react-router-dom';
+
 import SearchPage from './SearchPage.js';
 import DetailPage from './DetailPage.js';
 import './App.css';
 
 export default class App extends React.Component {
-  render() {
 
+  render() {
     return (
       <div>
         <Router>
-          <header>
+          <section>
             <Link to="/">Home</Link>
             <Link to="/detail">Detail</Link>
-          </header>
+          </section>
           <Switch>
             <Route
               path="/"
@@ -27,7 +28,7 @@ export default class App extends React.Component {
               render={(routerProps) => <SearchPage {...routerProps} />}
             />
             <Route
-              path="/detail"
+              path="/detail/:myPokemonId"
               exact
               render={(routerProps) => <DetailPage {...routerProps} />}
             />
