@@ -14,7 +14,7 @@ export default class SearchPage extends React.Component {
     handleClick = async () => {
         this.setState({ isLoading: true })
 
-        const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchBy}=${this.state.search}`);
+        const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?${this.state.searchBy}=${this.state.search}`);
 
         this.setState({
             pokeState: data.body.results,
