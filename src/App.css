@@ -11,9 +11,9 @@
   line-height: 50px;
   text-align: center;
 }
-
-.search-bar {
-   position: absolute;
+.prompt:hover {
+  color: goldenrod;
+  border-radius: 5px;
 }
 
 p {
@@ -27,6 +27,7 @@ p {
 input {
   margin: 5px;
   width: 200px;
+  border-radius: 5px;
 }
 
 button {
@@ -37,6 +38,12 @@ button {
 button:hover {
   background-color: red;
   cursor: pointer;
+}
+
+img {
+  background-color: white;
+  border-radius: 5px;
+  margin: 10px;
 }
 
 @keyframes App-logo-spin {

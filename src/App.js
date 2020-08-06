@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
 import request from 'superagent';
-//import PokeDropdown from './pokeDropdown.js';
 
 export default class App extends React.Component {
 
   state = {
     search: '',
-    isLoading: false,
+
     pokeState: []
   }
 
@@ -39,7 +38,9 @@ export default class App extends React.Component {
       <div>
         <header className="App-header">
           <p className="search-bar">
-            What Pokemon do you want to catch?
+            <div className="prompt">
+              What Pokemon do you want to catch?
+              </div>
             <input onChange={(e) => this.setState({ search: e.target.value })} />
             <button onClick={this.handleClick}>Catch Pokemon!</button>
           </p>
@@ -53,7 +54,7 @@ export default class App extends React.Component {
               <img src={poke.url_image} alt={poke.pokemon} />
             </div>)
           }
-          {/*<PokeDropdown pokeState={this.state.pokeState} />*/}
+
         </header>
       </div >
     );
