@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import request from 'superagent';
-import PokeDropdown from './pokeDropdown.js';
+//import PokeDropdown from './pokeDropdown.js';
 
 export default class App extends React.Component {
 
@@ -24,6 +24,7 @@ export default class App extends React.Component {
     this.setState({
       pokeState: data.body.results,
       isLoading: false
+
     })
   }
 
@@ -37,17 +38,23 @@ export default class App extends React.Component {
     return (
       <div>
         <header className="App-header">
-          What Pokemon do you want to catch?
-          <input onChange={(e) => this.setState({ search: e.target.value })} />
-          <button onClick={this.handleClick}>Catch Pokemon!</button>
+          <p className="search-bar">
+            What Pokemon do you want to catch?
+            <input onChange={(e) => this.setState({ search: e.target.value })} />
+            <button onClick={this.handleClick}>Catch Pokemon!</button>
+          </p>
+          {
+            this.state.isLoading
+          }
+
+          {
+            this.state.pokeState.map(poke => <div key={poke.pokemon}>
+              <p>{poke.pokemon} </p>
+              <img src={poke.url_image} alt={poke.pokemon} />
+            </div>)
+          }
+          {/*<PokeDropdown pokeState={this.state.pokeState} />*/}
         </header>
-        {
-          this.state.pokeState.map(poke => <div key={poke.pokemon}>
-            <p>{poke.pokemon} </p>
-            <img src={poke.url_image} alt={poke.pokemon} />
-          </div>)
-        }
-        <PokeDropdown pokeState={this.state.pokeState} />
       </div >
     );
   }

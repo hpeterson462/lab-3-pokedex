@@ -19,7 +19,7 @@ export default class PokeDropdown extends React.Component {
             <div>
                 <select onChange={this.props.handleDropdown}>
                     {
-                        option.map(filterPokemon => <option key={filterPokemon.pokemon} value={selectedOption}>{selectedOption}</option>)
+                        this.props.selectedOption.map(filterPokemon => <option key={filterPokemon.pokemon} value={filterPokemon}></option>)
                     }
                 </select>
                 {
