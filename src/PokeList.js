@@ -4,7 +4,7 @@ import PokeItem from './PokeItem.js';
 export default class PokeList extends React.Component {
     render() {
 
-        const { pokeState, handleNextClick, handleBackClick, currentPage } = this.props;
+        const { pokeState, handleNextClick, handleBackClick, currentPage, totalPages } = this.props;
 
         return (
             <div>
@@ -12,22 +12,19 @@ export default class PokeList extends React.Component {
                     pokeState.length > 0 &&
                     <div>
                         {
-                            currentPage !== totalPages &&
-                            <button
-                                onClick={handleNextClick}>Next</button>
+                            Number(currentPage) !== 1 &&
+                            <button onClick={handleBackClick}>Back</button>
                         }
                         {
-                            currentPage !== 1 &&
-                            <button onClick={handleBackClick}>Back</button>
+                            Number(currentPage) !== Number(totalPages) &&
+                            <button onClick={handleNextClick}>Next</button>
                         }
                         {currentPage} of {totalPages}
                     </div>
                 }
-                {
-                    <div className="pokemonDisplay">
-                        pokeState.map((poke) => {<PokeItem pokemon={poke.pokemon} key={poke.pokemon} image={poke.url_image} />)
-                    </div>
-                }
+                <div className="pokemon-display">
+                    {pokeState.map(pokemon => <PokeItem pokemon={pokemon} key={pokemon} image={pokemon.url_image} />)}
+                </div>
             </div >
         )
     }
