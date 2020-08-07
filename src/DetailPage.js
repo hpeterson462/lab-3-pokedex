@@ -8,12 +8,12 @@ export default class DetailPage extends React.Component {
 
     componentDidMount = async () => {
 
-        const id = this.props.match.params.myPokemonId;
+        const name = this.props.match.params.myPokemonId;
 
-        const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${id}`);
+        const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${name}`);
 
         const pokemonData = data.body.results[0];
-
+        console.log(name);
         this.setState({ pokemon: pokemonData });
     }
 
@@ -21,7 +21,7 @@ export default class DetailPage extends React.Component {
     render() {
 
         const { pokemon } = this.state;
-        console.log(this.state);
+
         return (
             <>
                 {

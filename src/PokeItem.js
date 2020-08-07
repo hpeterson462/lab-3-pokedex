@@ -8,7 +8,7 @@ export default class PokeItem extends React.Component {
         const { pokemon } = this.props;
 
         return (
-            <Link to={`/detail/${pokemon}`}>
+            <Link to={`/detail/${pokemon.pokemon}`}>
                 <p>{pokemon.pokemon}</p>
                 <img src={pokemon.url_image} alt={pokemon.pokemon} />
             </Link>

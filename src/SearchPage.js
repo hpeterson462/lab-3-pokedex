@@ -29,9 +29,9 @@ export default class SearchPage extends React.Component {
     }
 
     handleDropdown = (e) => {
-        const type = e.target.value;
+        const userSelection = e.target.value;
 
-        this.setState({ filter: type })
+        this.setState({ filter: userSelection })
     }
 
     render() {
@@ -41,26 +41,28 @@ export default class SearchPage extends React.Component {
         return (
             <>
                 <div className="App-div">
-                    <section className="search-bar">
+                    <section className="search">
                         <div className="prompt">
                             What Pokemon do you want to catch?
                         </div>
                         <input onChange={this.handleTextInput} />
+                        <select onChange={this.handleDropdown} >
+                            <option value="pokemon">Name
+                            </option>
+                            <option value="type">Type
+                            </option>
+                            <option value="attack">Attack
+                            </option>
+                            <option value="defense">Defense
+                            </option>
+                        </select>
+                        <button onClick={this.handleClick}>Catch Pokemon!</button>
                     </section>
-                    <select onChange={this.handleDropdown} >
-                        <option value="pokemon">Name
-                            </option>
-                        <option value="type">Type
-                            </option>
-                        <option value="attack">Attack
-                            </option>
-                        <option value="defense">Defense
-                            </option>
-                    </select>
-                    <button onClick={this.handleClick}>Catch Pokemon!</button>
-                    {
-                        isLoading ? <h1>Loading</h1> : pokeState.map(poke => <PokeItem pokemon={poke} />)
-                    }
+                    <section>
+                        {
+                            isLoading ? <h1 className="loading">Loading</h1> : pokeState.map(poke => <PokeItem pokemon={poke} key={poke.pokemon} />)
+                        }
+                    </section>
                 </div >
             </>
         );

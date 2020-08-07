@@ -17,10 +17,8 @@ export default class App extends React.Component {
     return (
       <div>
         <Router>
-          <section>
-            <Link to="/">Home</Link>
-            <Link to="/detail">Detail</Link>
-          </section>
+          <Link to="/">Home</Link>
+          <Link to="/detail">Detail</Link>
           <Switch>
             <Route
               path="/"
