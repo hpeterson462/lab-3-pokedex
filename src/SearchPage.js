@@ -14,13 +14,13 @@ export default class SearchPage extends React.Component {
     }
 
     componentDidMount = async () => {
-        //current page
+        //current page
         const params = new URLSearchParams(this.props.location.search);
         const searchBy = params.get('searchBy');
         const page = params.get('page');
         const search = params.get('search');
 
-        //sync with current page state in React 
+        //sync with current page state in React 
         if (searchBy && page && search) {
             await this.setState({
                 searchBy: searchBy,
@@ -28,27 +28,25 @@ export default class SearchPage extends React.Component {
                 search: search
             });
         }
-        await this.makeRequest()
     }
 
     makeRequest = async () => {
         this.setState({ isLoading: true })
 
-        const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?page=${this.state.currentPage}&perPage=20&=${this.state.searchBy}=${this.state.search}`);
+        const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?page=${this.state.currentPage}&perPage=20&${this.state.searchBy}=${this.state.search}`);
 
-        await this.setState({
+        this.setState({
             pokeState: data.body.results,
             totalPages: Math.ceil(data.body.count / 20),
             isLoading: false
         })
-
         const params = new URLSearchParams(this.props.location.search);
 
         params.set('search', this.state.search);
         params.set('searchBy', this.state.searchBy);
         params.set('page', this.state.currentPage);
 
-        this.props.history.push('?', + params.toString())
+        this.props.history.push('?', + params.toString())
     }
 
     handleSubmit = async (e) => {
@@ -61,17 +59,15 @@ export default class SearchPage extends React.Component {
     }
 
     handleNextClick = async () => {
-        await this.setState({ currentPage: Number(this.setState.currentPage) + 1 })
+        await this.setState({ currentPage: Number(this.state.currentPage) + 1 })
 
         await this.makeRequest();
-
     }
 
     handleBackClick = async () => {
-        await this.setState({ currentPage: Number(this.setState.currentPage) - 1 })
+        await this.setState({ currentPage: Number(this.state.currentPage) - 1 })
 
         await this.makeRequest();
-
     }
 
     render() {
