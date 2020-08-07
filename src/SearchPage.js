@@ -22,18 +22,6 @@ export default class SearchPage extends React.Component {
         })
     }
 
-    handleTextInput = (e) => {
-        const pokemon = e.target.value;
-
-        this.setState({ filter: pokemon })
-    }
-
-    handleDropdown = (e) => {
-        const userSelection = e.target.value;
-
-        this.setState({ filter: userSelection })
-    }
-
     render() {
 
         const { pokeState, isLoading } = this.state;
@@ -45,15 +33,15 @@ export default class SearchPage extends React.Component {
                         <div className="prompt">
                             What Pokemon do you want to catch?
                         </div>
-                        <input onChange={this.handleTextInput} />
-                        <select onChange={this.handleDropdown} >
-                            <option value="pokemon">Name
+                        <input onChange={(e) => this.setState({ search: e.target.value })} />
+                        <select onChange={(e) => this.setState({ search: e.target.value })} >
+                            <option value='pokemon'>Name
                             </option>
-                            <option value="type">Type
+                            <option value='type_1'>Type
                             </option>
-                            <option value="attack">Attack
+                            <option value='attack'>Attack
                             </option>
-                            <option value="defense">Defense
+                            <option value='defense'>Defense
                             </option>
                         </select>
                         <button onClick={this.handleClick}>Catch Pokemon!</button>
