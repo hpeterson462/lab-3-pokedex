@@ -26,12 +26,12 @@ export default class DetailPage extends React.Component {
             <>
                 {
                     pokemon ?
-                        <div>
+                        <div className="detail-page">
                             <p>{pokemon.pokemon}</p>
                             <p>Type: {pokemon.type_1}</p>
                             <p>Defense: {pokemon.defense}</p>
                             <p>Attack: {pokemon.attack}</p>
-                            <img src={pokemon.url_image} alt={pokemon.pokemon} />
+                            <img className="detail-page-img" src={pokemon.url_image} alt={pokemon.pokemon} />
                         </div> :
                         <h1>Loading</h1>
 

@@ -23,7 +23,7 @@ export default class PokeList extends React.Component {
                     </div>
                 }
 
-                <div className="pokemon-display">
+                <div>
                     {pokeState.map(pokemon => <PokeItem pokemon={pokemon} key={pokemon.pokemon} image={pokemon.url_image} />)}
                 </div>
             </div >

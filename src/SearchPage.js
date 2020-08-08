@@ -75,8 +75,8 @@ export default class SearchPage extends React.Component {
         const { pokeState, isLoading, currentPage, totalPages } = this.state;
 
         return (
-            <div className="search">
-                <section className="side-bar">
+            <main>
+                <section>
                     <form onSubmit={this.handleSubmit}>
                         <p className="prompt">
                             What Pokemon do you want to catch?
@@ -95,14 +95,14 @@ export default class SearchPage extends React.Component {
                         <button onClick={this.handleClick}>Catch Pokemon!</button>
                     </form>
                 </section>
-                <section className="results">
+                <section>
                     {
                         isLoading ?
                             <h1 className="loading">Loading</h1> :
                             <PokeList handleNextClick={this.handleNextClick} handleBackClick={this.handleBackClick} currentPage={currentPage} pokeState={pokeState} totalPages={totalPages} />
                     }
                 </section>
-            </div>
+            </main>
         );
     }
 }

@@ -16,9 +16,11 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Router>
-          <Link to="/">Home</Link>
-          <Link to="/detail">Detail</Link>
+        <Router className="app">
+          <div className="nav-bar">
+            <Link to="/">Home</Link>
+            <Link to="/detail">Detail</Link>
+          </div>
           <Switch>
             <Route
               path="/"
