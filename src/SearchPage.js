@@ -14,13 +14,16 @@ export default class SearchPage extends React.Component {
     }
 
     componentDidMount = async () => {
-        //current page
+
+        console.log(this.props);
+
         const params = new URLSearchParams(this.props.location.search);
         const searchBy = params.get('searchBy');
         const page = params.get('page');
         const search = params.get('search');
 
-        //sync with current page state in React 
+        console.log(search, page, searchBy);
+
         if (searchBy && page && search) {
             await this.setState({
                 searchBy: searchBy,
@@ -32,7 +35,7 @@ export default class SearchPage extends React.Component {
 
     makeRequest = async () => {
         this.setState({ isLoading: true })
-
+        console.log(this.state);
         const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?page=${this.state.currentPage}&perPage=20&${this.state.searchBy}=${this.state.search}`);
 
         this.setState({

@@ -93,6 +93,8 @@ img {
   background-color: white;
   border-radius: 5px;
   margin: 10px;
+  height: 200px;
+  width: auto;
 }
 
 .loading {
@@ -111,8 +113,14 @@ img {
 .detail-page {
   font-size: 24px;
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 .detail-page-img {
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 450px;
+  height: 400px;
+  width: auto;
 }
