@@ -26,6 +26,7 @@ export default class SearchPage extends React.Component {
                 search: search
             });
         }
+        await this.makeRequest();
     }
 
     makeRequest = async () => {
@@ -44,7 +45,7 @@ export default class SearchPage extends React.Component {
         params.set('searchBy', this.state.searchBy);
         params.set('page', this.state.currentPage);
 
-        this.props.history.push('?', + params.toString())
+        this.props.history.push('?' + params.toString())
     }
 
     handleSubmit = async (e) => {
