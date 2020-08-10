@@ -5,7 +5,7 @@ export default class PokeList extends React.Component {
     render() {
 
         const { pokeState, handleNextClick, handleBackClick, currentPage, totalPages } = this.props;
-        console.log(currentPage);
+
         return (
             <div>
                 {
