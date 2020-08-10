@@ -1,9 +1,17 @@
 import React from 'react';
+import './App.css';
+import { Link } from 'react-router-dom';
 
 export default class PokeItem extends React.Component {
     render() {
+
+        const { pokemon } = this.props;
+
         return (
-            <img src={this.props.pokemon.image} alt={this.props.pokemon.name} />
+            <Link to={`/detail/${pokemon.pokemon}`}>
+                <p>{pokemon.pokemon}</p>
+                <img src={pokemon.url_image} alt={pokemon.pokemon} />
+            </Link>
         )
     }
 }

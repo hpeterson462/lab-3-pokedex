@@ -1,16 +1,54 @@
-.App-header {
-  background-color: #282c34;
+.app {
   min-height: 100vh;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  border: solid red 2px;
+  display: flex;
+  background-color: red;
   font-size: calc(10px + 2vmin);
   color: white;
   line-height: 50px;
   text-align: center;
+  height: min-content;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  text-transform: capitalize;
 }
+
+a {
+  display: inline-grid;
+  text-align: center;
+  text-decoration: none;
+  font-size: 24px;
+  color: white;
+  background-color: #282c34;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+a:hover {
+  cursor: pointer;
+  color: goldenrod;
+  background-color: white;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  background-color: #282c34;
+  justify-content: space-evenly;
+  font-weight: bold;
+  padding: 30px;
+}
+
+.prompt {
+  font-size: 36px;
+}
+
 .prompt:hover {
   color: goldenrod;
   border-radius: 5px;
@@ -21,29 +59,46 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 }
 
 input {
   margin: 5px;
   width: 200px;
+  height: 20px;
   border-radius: 5px;
+  padding: 7px;
+}
+
+select {
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 18px;
 }
 
 button {
   margin: 10px;
   border-radius: 5px;
+  justify-items: center;
+  padding: 5px;
+  font-size: 18px;
 }
 
 button:hover {
-  background-color: red;
+  background-color: red ;
   cursor: pointer;
+  color: white
 }
 
 img {
   background-color: white;
   border-radius: 5px;
   margin: 10px;
+  height: 200px;
+  width: auto;
+}
+
+.loading {
+  animation: App-logo-spin infinite .2s linear;
 }
 
 @keyframes App-logo-spin {
@@ -53,4 +108,19 @@ img {
   to {
     transform: rotate(360deg);
   }
+}
+
+.detail-page {
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.detail-page-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 450px;
+  height: 400px;
+  width: auto;
 }
